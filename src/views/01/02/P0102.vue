@@ -1,6 +1,5 @@
 <template>
   <div>用户管理
-    dddddddfffrfr
     <el-select v-model="value" placeholder="请选择">
       <el-option
         v-for="item in options"
