@@ -1,91 +1,147 @@
 <template>
-  <div>
-    <el-menu :default-active="currentMenu" class="el-menu-vertical" :collapse="isCollapse" :router="true" @select="handleSelect">
+  <div :class="isIcon ? 'aside-menu-icon' : 'aside-menu'">
+    <el-menu :default-active="currentMenu" :class="isIcon ? 'el-menu-vertical-demo' : 'el-menu-vertical'" :collapse="isCollapse" :router="true" @select="handleSelect">
       <template v-if="menuList.length > 0">
-        <menu-tree :menu-list="menuList" :is-collapse="isCollapse"></menu-tree>
+        <menu-tree :menu-list="menuList" :is-collapse="isCollapse" :is-icon="isIcon"></menu-tree>
       </template>
     </el-menu>
-    <div class="collapse-btn">
+    <div class="collapse-btn" v-if="isIcon">
+      <i :class="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'" @click="isCollapse = !isCollapse"></i>
+    </div>
+    <div class="collapse-btn" v-else>
       <el-button size="medium" @click="isCollapse = !isCollapse">
-        <i :class="isCollapse?'el-icon-right':'el-icon-back'" :style="!isCollapse?'padding:0 20px;':''"></i>
+        <i :class="isCollapse ? 'el-icon-right' : 'el-icon-back'" :style="!isCollapse ? 'padding:0 20px;' : ''"></i>
       </el-button>
     </div>
   </div>
 </template>
 <script>
-import menuTree from "./menuTree.js"
+import menuTree from "./menuTree.js";
 export default {
-  name:"asideMenu",
-  components:{menuTree},
-  props:{
-    isMenuCollapse:{
-      type:Boolean,
-      default:false
-    }
+  name: "asideMenu",
+  components: { menuTree },
+  props: {
+    isMenuCollapse: {
+      type: Boolean,
+      default: false,
+    },
+    isMenuIcon: {
+      type: Boolean,
+      default: false,
+    },
   },
-  data(){
-    return{
-      menuList:[],
-      currentMenu:'',
-      isCollapse:this.isMenuCollapse
-    }
+  data() {
+    return {
+      menuList: [],
+      currentMenu: "",
+      isCollapse: this.isMenuCollapse,
+      isIcon: this.isMenuIcon,
+    };
   },
-  created(){
+  created() {
     this.getMenuList();
   },
-  watch:{
-    $route(to,from){
-      this.currentMenu="/" + to.name
-    }
-  },
-  methods:{
-    handleSelect(key){
-      this.$emit("select",key)
+  watch: {
+    $route(to, from) {
+      this.currentMenu = "/" + to.name;
     },
-    async getMenuList(){
-      this.menuList= await this.$post("menu/getMenuList",{},true)
+  },
+  methods: {
+    handleSelect(key) {
+      this.$emit("select", key);
+    },
+    async getMenuList() {
+      this.menuList = await this.$post("menu/getMenuList", {}, true);
+    },
+  },
+};
+</script>
+<style lang="less">
+.aside-menu {
+  .el-menu {
+    border-right: none;
+  }
+  .el-menu-vertical {
+    height: 84vh;
+    width: 200px;
+    overflow-x: auto;
+    .vertical {
+      display: flex;
+      align-items: center;
+      img {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+      }
     }
   }
-}
-</script>
-<style lang="less" >
-.el-menu-vertical{
-  height: 84vh;
-  overflow-x: auto;
-}
-.el-menu{
-  border-right: none;
-}
-.vertical{
-  display: flex;
-  align-items: center;
-  img{
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+  .el-menu--collapse {
+    width: 100px;
+    .el-menu-item,
+    .el-submenu__title {
+      line-height: normal;
+      height: auto;
+      margin: 20px 0;
+    }
+    .horizontal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+      }
+      & + .el-submenu__icon-arrow {
+        display: none;
+      }
+    }
+  }
+  .collapse-btn {
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #fff;
+    box-sizing: border-box;
   }
 }
-.horizontal{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  img{
-    width: 40px;
-    height: 40px;
-    margin-bottom: 10px;
+.aside-menu-icon {
+  .el-menu {
+    border-right: none;
   }
-  & + .el-submenu__icon-arrow{
-    display: none;
+  .el-menu-vertical-demo {
+    height: 84vh;
+    width: 200px;
+    overflow-x: auto;
+    i {
+      font-size: 20px;
+    }
   }
-}
-.collapse-btn{
-  height: 8vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: #fff;
-  box-sizing: border-box;
+  .el-menu--collapse {
+    width: 64px;
+    .horizontal {
+      .notitle {
+        display: none;
+      }
+      & + .el-submenu__icon-arrow {
+        display: none;
+      }
+    }
+  }
+  .collapse-btn {
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 0px 20px;
+    i {
+      font-size: 26px;
+    }
+  }
 }
 </style>
