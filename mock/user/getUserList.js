@@ -1,5 +1,4 @@
 export function getMock(params) {
-  console.log(params);
   const list = [
     { userName: "小李子", name: "李四", age: 18, roleId: "1", roleName: "黄金糕", unitId: "4", unitName: "龙须面", tel: "18587345771", email: "1910265606@qq.com", address: "" },
     { userName: "小宇", name: "王宇", age: 18, roleId: "1", roleName: "黄金糕", unitId: "4", unitName: "龙须面", tel: "18587345771", email: "my_xiaoyufamily@163.com", address: "" },

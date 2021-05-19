@@ -1,13 +1,13 @@
 <template>
   <div class="main-header">
     <div class="header-left">
-      <img class="logo" src="@common/image/logo.png"/>
+      <img class="logo" src="@common/image/logo.png" />
       <span class="logo-text">Element UI Admin</span>
     </div>
     <div class="header-right">
-      <img src="@common/image/headImg.gif" class="head-img"/>
+      <img src="@common/image/headImg.gif" class="head-img" />
       <div>
-        <span class="user-name">李四</span>
+        <span class="user-name">{{ userInfo.name }}</span>
         <el-dropdown @command="_handleCommand">
           <span class="el-dropdown-link">
             <i class="el-icon-caret-bottom el-icon--right"></i>
@@ -23,21 +23,29 @@
 </template>
 <script>
 export default {
-  name:"mainHeader",
-  data(){
-    return{
-
-    }
+  name: "mainHeader",
+  data() {
+    return {
+      userInfo: {},
+    };
   },
-  methods:{
-    _handleCommand(command){
-      console.log(command);
-    }
-  }
-}
+  created() {
+    this.userInfo = JSON.parse(localStorage.getItem("loginData"));
+  },
+  methods: {
+    _handleCommand(command) {
+      if (command === "loginOut") {
+        window.localStorage.clear();
+        this.$router.push("/login");
+      } else {
+        this.$router.push("/mine");
+      }
+    },
+  },
+};
 </script>
 <style lang="less" scoped>
-.main-header{
+.main-header {
   background: #fff;
   display: flex;
   align-items: center;
@@ -45,30 +53,31 @@ export default {
   padding: 0 22px;
   height: 100%;
   border-bottom: none;
-  box-shadow: 10px 10px 5px rgba(0,21,41,8%);
-  .header-left,.header-right{
+  box-shadow: 10px 10px 5px rgba(0, 21, 41, 8%);
+  .header-left,
+  .header-right {
     display: flex;
     color: #333;
     font-size: 12px;
     align-items: center;
-    .logo{
+    .logo {
       width: 26px;
       height: 27px;
       margin-right: 5px;
     }
-    .logo-text{
+    .logo-text {
       font-size: 20px;
     }
-    .head-img{
+    .head-img {
       width: 40px;
       height: 40px;
       margin: 0 10px;
       border-radius: 50%;
     }
-    .user-name{
+    .user-name {
       font-size: 16px;
     }
-    i{
+    i {
       font-size: 18px;
     }
   }

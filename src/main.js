@@ -5,6 +5,7 @@ import store from "./store";
 import ExtendComponents from "./components";
 import { get, post } from "./common/js/service";
 import waterMark from "./common/js/waterMark";
+import ParticlesJs from "particles.js";
 // UI 框架
 // import ElementuI from 'element-ui'
 import {
@@ -83,6 +84,7 @@ Vue.config.productionTip = false;
 Vue.use(ExtendComponents);
 // Vue.use(ElementuI)
 Vue.use(waterMark);
+Vue.use(ParticlesJs);
 Vue.prototype.$get = get;
 Vue.prototype.$post = post;
 Vue.prototype.$echarts = echarts;

@@ -23,7 +23,6 @@ export default {
   data() {
     return {
       tabList: [],
-      isInit: true,
       currentPath: "",
     };
   },
@@ -31,12 +30,6 @@ export default {
     $route(to) {
       const { name, path, meta } = to;
       this.currentPath = path;
-      // 第一次打开时，添加当前标签页
-      if (this.isInit) {
-        const tabItem = { name, path, title: meta ? meta.title : "" };
-        this.tabList.push(tabItem);
-        this.isInit = false;
-      }
       //如果通过直接跳转，加上tab
       const tabNameList = this.tabList.map((item) => item.name);
       if (!tabNameList.includes(name)) {
@@ -51,6 +44,19 @@ export default {
       return index;
     },
   },
+  created() {
+    // 第一次打开时，添加当前标签页
+    let [currentItem] = this.findTab(routes, this.$route.name);
+    const { name, path, meta } = currentItem;
+    this.currentPath = path;
+    const tabItem = { name, path, title: meta ? meta.title : "" };
+    this.tabList.push(tabItem);
+  },
+  mounted() {
+    this.$root.$on("close", () => {
+      this._clickClose(this.currentIndex);
+    });
+  },
   methods: {
     _clickTab(index) {
       this.$router.push(this.tabList[index].name);
@@ -64,16 +70,35 @@ export default {
       if (command === "closeThis") {
         this._clickClose(this.currentIndex);
       } else if (command === "closeOther") {
-        this.tabList = [this.tabList(this.currentIndex)];
+        this.tabList = [this.tabList[this.currentIndex]];
       } else {
         this.tabList = [];
         this.$router.push("/");
       }
     },
+    findTab(routes, tabName) {
+      let arr = [];
+      if (!routes.length) return [];
+      for (let i in routes) {
+        if (routes[i].children) {
+          let data = routes[i].children;
+          data.map((item) => {
+            if (item.name === tabName) {
+              arr.push(item);
+            }
+          });
+        }
+      }
+      return !arr.length ? [] : arr;
+    },
     addTab(tabName) {
       tabName = tabName.replace("/", "");
-      let [currentItem] = routes.filter((router) => router.name === tabName);
-      //  let [currentItem] = routes[1].children.filter(router=>router.name===tabName)
+      let [currentItem] = [];
+      if (tabName.indexOf("P") >= 0 || /^\d+$/.test(tabName)) {
+        [currentItem] = this.findTab(routes, tabName);
+      } else {
+        [currentItem] = routes.filter((router) => router.name === tabName);
+      }
       if (!currentItem) {
         tabName = "404";
       }
@@ -82,8 +107,11 @@ export default {
       if (tabNameList.includes(tabName)) {
         this._clickTab(tabNameList.indexOf(tabName));
       } else {
-        [currentItem] = routes.filter((router) => router.name === tabName);
-        // [currentItem]=routes[1].children.filter(router=>router.name===tabName)
+        if (tabName.indexOf("P") >= 0 || /^\d+$/.test(tabName)) {
+          [currentItem] = this.findTab(routes, tabName);
+        } else {
+          [currentItem] = routes.filter((router) => router.name === tabName);
+        }
         const { name, path, meta } = currentItem;
         const tabItem = {
           name,

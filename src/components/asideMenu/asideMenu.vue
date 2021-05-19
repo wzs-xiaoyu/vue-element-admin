@@ -40,6 +40,7 @@ export default {
   },
   created() {
     this.getMenuList();
+    this.currentMenu = this.$route.path;
   },
   watch: {
     $route(to, from) {

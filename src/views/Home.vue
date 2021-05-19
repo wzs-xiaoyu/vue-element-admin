@@ -26,6 +26,7 @@
 <script>
 import { parseUrl } from "@common/js/utils";
 export default {
+  name: "Home",
   data() {
     return {
       isSingle: false,
