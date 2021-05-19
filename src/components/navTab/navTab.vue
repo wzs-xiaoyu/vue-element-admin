@@ -2,7 +2,7 @@
   <div class="nav-tab">
     <div class="tab-item" :class="{ activeTab: currentPath == item.path }" v-for="(item, index) in tabList" :key="index" @click="_clickTab(index)">
       {{ item.title }}
-      <em v-show="tabList.length > 1" class="el-icon-error close-item" :class="{ activeClose: currentPath == item.path }" @click.stop="_clickClose(index)"> </em>
+      <em v-show="tabList.length > 1" class="el-icon-close close-item" :class="{ activeClose: currentPath == item.path }" @click.stop="_clickClose(index)"> </em>
     </div>
     <el-dropdown @command="_handleCommand" class="tabEdit">
       <span class="el-dropdown-link">

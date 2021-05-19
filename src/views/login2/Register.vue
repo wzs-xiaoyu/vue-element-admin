@@ -14,13 +14,13 @@
           <el-input type="text" v-model="ruleForm.userName" prefix-icon="el-icon-user" placeholder="请输入用户名" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="" prop="password">
-          <el-input type="password" v-model="ruleForm.password" prefix-icon="el-icon-goods" placeholder="请输入密码" autocomplete="off"></el-input>
+          <el-input type="password" v-model="ruleForm.password" prefix-icon="el-icon-lock" placeholder="请输入密码" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="" prop="checkPass">
-          <el-input type="password" v-model="ruleForm.checkPass" prefix-icon="el-icon-goods" placeholder="请输入确认密码" autocomplete="off"></el-input>
+          <el-input type="password" v-model="ruleForm.checkPass" prefix-icon="el-icon-lock" placeholder="请输入确认密码" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="" prop="name">
-          <el-input type="text" v-model="ruleForm.name" prefix-icon="el-icon-goods" placeholder="请输入姓名" autocomplete="off"></el-input>
+          <el-input type="text" v-model="ruleForm.name" prefix-icon="el-icon-c-scale-to-original" placeholder="请输入姓名" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click.stop="registerForm" :loading="loading" style="width: 100%">注册</el-button>

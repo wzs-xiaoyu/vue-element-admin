@@ -42,7 +42,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   Nprogress.start();
   let loginData = JSON.parse(localStorage.getItem("loginData"));
-  if (loginData === null && to.path !== "/login") {
+  if (loginData === null && to.path !== "/login" && loginData === null && to.path !== "/register") {
     next("/login");
   }
   next();

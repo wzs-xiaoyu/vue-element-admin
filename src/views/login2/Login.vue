@@ -14,7 +14,7 @@
           <el-input type="text" v-model="ruleForm.userName" prefix-icon="el-icon-user" placeholder="请输入用户名" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="" prop="password">
-          <el-input type="password" v-model="ruleForm.password" prefix-icon="el-icon-goods" placeholder="请输入密码" autocomplete="off"></el-input>
+          <el-input type="password" v-model="ruleForm.password" prefix-icon="el-icon-lock" placeholder="请输入密码" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="" prop="code">
           <el-input type="text" v-model="ruleForm.code" prefix-icon="el-icon-c-scale-to-original" placeholder="请输入验证码" autocomplete="off">

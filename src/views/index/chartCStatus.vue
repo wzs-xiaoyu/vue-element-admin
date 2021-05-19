@@ -13,7 +13,7 @@ export default {
       console.log(cdata);
       const xAxisData = [];
       const barData = [];
-      cdata.forEach(item => {
+      cdata.forEach((item) => {
         xAxisData.push(item.name);
         const bar = { ...item };
         barData.push(bar);
@@ -22,31 +22,31 @@ export default {
         color: ["#38A2FE"],
         legend: {
           show: false,
-          data: this.legendData
+          data: this.legendData,
         },
         grid: {
           left: "2%",
           right: "2%",
           bottom: "2%",
           top: "2%",
-          containLabel: true
+          containLabel: true,
         },
         yAxis: {
           type: "category",
           data: xAxisData,
           axisLabel: {
             fontSize: "16",
-            color: "#FFF"
+            color: "#FFF",
           },
           axisLine: {
-            show: false
+            show: false,
           },
           splitLine: {
-            show: false
+            show: false,
           },
           axisTick: {
-            show: false
-          }
+            show: false,
+          },
         },
         xAxis: {
           type: "value",
@@ -54,20 +54,20 @@ export default {
           axisLabel: {
             show: false,
             fontSize: "16",
-            color: "#5E75BA"
+            color: "#5E75BA",
           },
           axisLine: {
-            show: false
+            show: false,
           },
           axisTick: {
-            show: false
+            show: false,
           },
           splitLine: {
             show: false,
             lineStyle: {
-              color: "#5E75BA"
-            }
-          }
+              color: "#5E75BA",
+            },
+          },
         },
         series: [
           {
@@ -79,27 +79,27 @@ export default {
               show: true,
               position: "right",
               color: "#FFF",
-              fontSize: "16"
+              fontSize: "16",
             },
             itemStyle: {
-              normal: {
-                color: new this.$echarts.graphic.LinearGradient(
-                  0,
-                  0,
-                  0,
-                  1,
-                  [
-                    { offset: 0, color: "rgba(103,247,255,1)" },
-                    { offset: 1, color: "rgba(0,47,140,1)" }
-                  ],
-                  false
-                )
-              }
-            }
-          }
-        ]
+              // normal: {//4.0.0版本废弃
+              color: new this.$echarts.graphic.LinearGradient(
+                0,
+                0,
+                0,
+                1,
+                [
+                  { offset: 0, color: "rgba(103,247,255,1)" },
+                  { offset: 1, color: "rgba(0,47,140,1)" },
+                ],
+                false
+              ),
+              // }
+            },
+          },
+        ],
       };
-    }
+    },
   },
   watch: {},
   methods: {},
@@ -107,6 +107,6 @@ export default {
   mounted() {},
   activated() {},
   deactivated() {},
-  beforeDestroy() {}
+  beforeDestroy() {},
 };
 </script>
