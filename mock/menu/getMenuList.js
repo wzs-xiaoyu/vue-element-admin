@@ -2,7 +2,7 @@ export function getMock(params) {
   const result = [
     {
       name: "首页",
-      icon: "el-icon-setting",
+      icon: "el-icon-data-analysis",
       path: "/index",
     },
     {
@@ -14,20 +14,20 @@ export function getMock(params) {
         { name: "用户管理", path: "/P0102" },
         { name: "菜单管理", path: "/P0103" },
         { name: "单位管理", path: "/P0105" },
-        { name: "日志管理", path: "/P0104" },
+        { name: "字典管理", path: "/P0104" },
         // {name:'',path:''},
         // {name:'',path:''},
         // {name:'',path:''}
       ],
     },
     {
-      name: "系统管理1",
-      icon: "el-icon-setting",
+      name: "系统监控",
+      icon: "el-icon-odometer",
       path: "/sys1",
       children: [
-        { name: "角色管理1", path: "/P0201" },
-        { name: "用户管理1", path: "/P0202" },
-        // {name:'',path:''},
+        { name: "在线用户", path: "/P0201" },
+        { name: "日志管理", path: "/P0202" },
+        { name: "服务监控", path: "/P0203" },
         // {name:'',path:''},
         // {name:'',path:''},
         // {name:'',path:''},
@@ -36,7 +36,7 @@ export function getMock(params) {
     },
     {
       name: "组件",
-      icon: "el-icon-setting",
+      icon: "el-icon-monitor",
       path: "/assembly",
       children: [
         { name: "时间线", path: "/P0301" },

@@ -7,7 +7,7 @@
     <div class="header-right">
       <img src="@common/image/headImg.gif" class="head-img" />
       <div>
-        <span class="user-name">{{ userInfo.name }}</span>
+        <span class="user-name">{{ userInfo.userName }}</span>
         <el-dropdown @command="_handleCommand">
           <span class="el-dropdown-link">
             <i class="el-icon-caret-bottom el-icon--right"></i>

@@ -1,3 +1,3 @@
 <template>
-  <div>日志管理</div>
+  <div>字典管理</div>
 </template>
