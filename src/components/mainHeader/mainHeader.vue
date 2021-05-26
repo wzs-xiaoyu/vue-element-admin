@@ -4,6 +4,7 @@
       <img class="logo" src="@common/image/logo.png" />
       <span class="logo-text">Element UI Admin</span>
     </div>
+    <div v-show="active === 'atopMenu'" class="header-menu"><slot name="menu"></slot></div>
     <div class="header-right">
       <img src="@common/image/headImg.gif" class="head-img" />
       <div>
@@ -22,6 +23,7 @@
   </div>
 </template>
 <script>
+import { mapState, mapMutations } from "../../views/storeSysSetting.js";
 export default {
   name: "mainHeader",
   data() {
@@ -31,6 +33,12 @@ export default {
   },
   created() {
     this.userInfo = JSON.parse(localStorage.getItem("loginData"));
+  },
+  computed: {
+    ...mapState({ navmode: "navmode" }),
+    active() {
+      return this.navmode;
+    },
   },
   methods: {
     _handleCommand(command) {
@@ -52,8 +60,8 @@ export default {
   justify-content: space-between;
   padding: 0 22px;
   height: 100%;
-  border-bottom: none;
-  box-shadow: 10px 10px 5px rgba(0, 21, 41, 8%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  // box-shadow: 10px 10px 5px rgba(0,21,41,8%);
   .header-left,
   .header-right {
     display: flex;
@@ -80,6 +88,11 @@ export default {
     i {
       font-size: 18px;
     }
+  }
+  .header-menu {
+    flex: 1;
+    margin: 0px 14px;
+    height: 100%;
   }
 }
 </style>

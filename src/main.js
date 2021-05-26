@@ -18,6 +18,7 @@ import {
   Input,
   Select,
   Option,
+  Switch,
   Radio,
   RadioGroup,
   RadioButton,
@@ -40,6 +41,9 @@ import {
   DropdownItem,
   Timeline,
   TimelineItem,
+  Drawer,
+  Breadcrumb,
+  BreadcrumbItem,
 } from "element-ui";
 [
   Form,
@@ -51,6 +55,7 @@ import {
   Input,
   Select,
   Option,
+  Switch,
   Radio,
   RadioGroup,
   RadioButton,
@@ -73,6 +78,9 @@ import {
   DropdownItem,
   Timeline,
   TimelineItem,
+  Drawer,
+  Breadcrumb,
+  BreadcrumbItem,
 ].forEach((comp) => Vue.use(comp));
 import "./common/style/theme/index.css";
 import "nprogress/nprogress.css";

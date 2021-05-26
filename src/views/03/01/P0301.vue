@@ -58,6 +58,8 @@ export default {
 </script>
 <style lang="less">
 .p0301 {
+  width: 100%;
+  background-color: #fff;
   .vcard {
     position: relative;
     width: 80%;

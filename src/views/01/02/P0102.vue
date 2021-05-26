@@ -30,7 +30,7 @@
         <el-button type="primary" size="small" @click="_exportExcel">导出</el-button>
       </div>
       <div class="content-table">
-        <el-table :data="tableData" stripe style="width: 100%" ref="tableRef">
+        <el-table :data="tableData" stripe border style="width: 100%" ref="tableRef">
           <el-table-column v-for="(item, index) in tableColumn" :key="index" :prop="item.prop" :label="item.label" :width="item.width"></el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
@@ -346,6 +346,7 @@ export default {
 <style lang="less" scoped>
 .p0102 {
   // height: 100%;
+  width: 100%;
   .p0102-head {
     background-color: #fff;
     padding: 22px 6px 0px 16px;

@@ -76,8 +76,8 @@ export default {
 </script>
 <style lang="less" scoped>
 .demo {
-  // width: 100%;
-  // display: flex;
+  width: 100%;
+  background-color: #fff;
   .demo-chart {
     display: flex;
     align-items: center;

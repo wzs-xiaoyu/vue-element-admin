@@ -1,4 +1,3 @@
-
 <template>
   <div class="drag-box">
     <TodoList :key="1" :list="todo" :group="group" class="kanban todo" header-text="Todo" />
@@ -7,81 +6,83 @@
   </div>
 </template>
 <script>
-import TodoList from './TodoList.vue'
+import TodoList from "./TodoList.vue";
 
 export default {
-  name: 'P0302',
+  name: "P0302",
   components: {
-    TodoList
+    TodoList,
   },
   data() {
     return {
-      group: 'mission',
+      group: "mission",
       todo: [
         {
           id: 1,
-          content: '开发图表组件'
+          content: "开发图表组件",
         },
         {
           id: 2,
-          content: '开发拖拽组件'
+          content: "开发拖拽组件",
         },
         {
           id: 3,
-          content: '开发权限测试组件'
-        }
+          content: "开发权限测试组件",
+        },
       ],
       doing: [
         {
           id: 1,
-          content: '开发登录注册页面'
+          content: "开发登录注册页面",
         },
         {
           id: 2,
-          content: '开发头部组件'
+          content: "开发头部组件",
         },
         {
           id: 3,
-          content: '开发表格相关组件'
+          content: "开发表格相关组件",
         },
         {
           id: 4,
-          content: '开发表单相关组件'
-        }
+          content: "开发表单相关组件",
+        },
       ],
-      done:[
+      done: [
         {
           id: 1,
-          content: '初始化项目，生成工程目录，完成相关配置'
+          content: "初始化项目，生成工程目录，完成相关配置",
         },
         {
           id: 2,
-          content: '开发项目整体框架'
-        }
-      ]
-    }
-  }
-}
+          content: "开发项目整体框架",
+        },
+      ],
+    };
+  },
+};
 </script>
 <style lang="less">
 .drag-box {
+  width: 100%;
+  background-color: #fff;
   display: flex;
   user-select: none;
-}
-.kanban {
-  &.todo {
-    .item-title {
-      background: #4A9FF9;
+  .kanban {
+    &.todo {
+      .item-title {
+        background: #4a9ff9;
+      }
     }
-  }
-  &.working {
-    .item-title {
-      background: #f9944a;
+    &.working {
+      .item-title {
+        background: #f9944a;
+      }
     }
-  }
-  &.done {
-    .item-title {
-      background: #2ac06d;
+    &.done {
+      .item-title {
+        background: #2ac06d;
+      }
     }
   }
 }

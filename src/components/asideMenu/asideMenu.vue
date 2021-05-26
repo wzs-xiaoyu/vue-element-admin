@@ -66,6 +66,9 @@ export default {
     height: 84vh;
     width: 200px;
     overflow-x: auto;
+    .is-active.el-menu-item {
+      border-right: 2px solid #e81734;
+    }
     .vertical {
       display: flex;
       align-items: center;
@@ -117,6 +120,9 @@ export default {
     height: 84vh;
     width: 200px;
     overflow-x: auto;
+    .is-active.el-menu-item {
+      border-right: 2px solid #e81734;
+    }
     i {
       font-size: 20px;
     }
