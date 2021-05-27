@@ -8,14 +8,19 @@
         <el-aside width="auto" v-if="!isSingle">
           <aside-menu :isMenuCollapse="isCollapse" :isMenuIcon="isIcon" @select="handleselect"></aside-menu>
         </el-aside>
-        <el-main>
-          <nav-tab ref="navTab" v-if="!isSingle"></nav-tab>
-          <div class="aside-view">
-            <keep-alive>
-              <router-view />
-            </keep-alive>
-          </div>
-        </el-main>
+        <el-container>
+          <el-main>
+            <nav-tab ref="navTab" v-if="!isSingle"></nav-tab>
+            <div class="aside-view">
+              <keep-alive>
+                <router-view />
+              </keep-alive>
+            </div>
+          </el-main>
+          <el-footer height="">
+            <pagFooter></pagFooter>
+          </el-footer>
+        </el-container>
       </el-container>
     </el-container>
     <el-container v-else-if="activeMode === 'atopMenu'">
@@ -32,6 +37,9 @@
           </keep-alive>
         </div>
       </el-main>
+      <el-footer height="">
+        <pagFooter></pagFooter>
+      </el-footer>
     </el-container>
     <el-container v-else> ssss3 </el-container>
     <sysSetting></sysSetting>
@@ -99,9 +107,9 @@ export default {
   overflow-x: hidden;
 }
 .aside-view {
-  height: calc(92vh - 16px - 30px - 16px);
-  overflow: auto;
+  height: calc(92vh - 16px - 30px - 98px);
   margin: 16px;
+  margin-bottom: 0px;
   display: flex;
 }
 .atophead {
@@ -118,14 +126,14 @@ export default {
   margin-top: 6vh;
 }
 .atop-view {
-  margin: 22px auto;
-  min-height: calc(94vh - 22px - 82px - 22px);
+  margin: 22px auto 0px auto;
+  min-height: calc(94vh - 22px - 82px - 98px);
   width: 74.6vw;
   display: flex;
 }
 .atop-view1 {
-  margin: 22px auto;
-  min-height: calc(94vh - 22px - 22px);
+  margin: 22px auto 0px auto;
+  min-height: calc(94vh - 22px - 98px);
   width: 74.6vw;
   display: flex;
 }
