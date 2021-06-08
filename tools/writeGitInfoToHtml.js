@@ -2,25 +2,26 @@ const exec = require("child_process").exec;
 const fs = require("fs");
 const chalk = require("chalk");
 const path = require("path");
-const htmlPath = path.resolve(__dirname, "../dist/index.html");
+const aresConfig = require("../ares.config");
+const htmlPath = path.resolve(__dirname, "../" + aresConfig.outputDir + "/index.html");
 console.log(chalk.yellow("\n读取git信息"));
 getBrachAndHash()
-  .then(suc => {
+  .then((suc) => {
     write(suc);
   })
-  .catch(err => {
+  .catch((err) => {
     console.log(chalk.red(err));
   });
 
 function write(gitInfo) {
   gitInfo = `\n<!--gitInfo@${gitInfo}-->`;
-  console.log(chalk.yellow("\n 追加 git 信息到 dist/index.html"));
+  console.log(chalk.yellow("\n 追加 git 信息到 " + aresConfig.outputDir + "/index.html"));
   fs.appendFileSync(htmlPath, gitInfo);
   console.log(chalk.yellow("\n git 信息追加成功: " + chalk.green(gitInfo)));
 }
 function getBrachAndHash() {
   return new Promise((rs, rj) => {
-    exec("git branch && git log -1", function(err, stdout, stderr) {
+    exec("git branch && git log -1", function (err, stdout, stderr) {
       if (err) {
         console.log(stderr);
         rj("");
