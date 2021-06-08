@@ -113,27 +113,27 @@ export default {
   display: flex;
 }
 .atophead {
-  height: 6vh;
+  height: 64px;
   z-index: 9;
   position: fixed;
   top: 0;
   width: 100%;
 }
 .atophead1 {
-  height: 6vh;
+  height: 64px;
 }
 .atopmain {
-  margin-top: 6vh;
+  margin-top: 64px;
 }
 .atop-view {
   margin: 22px auto 0px auto;
-  min-height: calc(94vh - 22px - 82px - 98px);
+  min-height: calc(100vh - 22px - 82px - 98px - 64px);
   width: 74.6vw;
   display: flex;
 }
 .atop-view1 {
   margin: 22px auto 0px auto;
-  min-height: calc(94vh - 22px - 98px);
+  min-height: calc(100vh - 22px - 98px - 64px);
   width: 74.6vw;
   display: flex;
 }

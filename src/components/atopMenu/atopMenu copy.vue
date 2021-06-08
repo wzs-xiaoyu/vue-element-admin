@@ -2,16 +2,14 @@
   <div :class="isIcon ? 'atop-menu-icon' : 'atop-menu'">
     <el-menu :default-active="currentMenu" class="el-menu-demo" mode="horizontal" :router="true" @select="handleSelect">
       <template v-if="menuList.length > 0">
-        <menu-tree :menu-list="menuList"></menu-tree>
+        <amenu-tree :list="menuList"></amenu-tree>
       </template>
     </el-menu>
   </div>
 </template>
 <script>
-import menuTree from "./menuTree.js";
 export default {
   name: "atopMenu",
-  components: { menuTree },
   props: {
     isMenuCollapse: {
       type: Boolean,
