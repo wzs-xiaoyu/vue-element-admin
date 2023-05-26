@@ -3,11 +3,13 @@ export function getMock(params) {
     {
       name: "首页",
       icon: "el-icon-data-analysis",
+      //icon:'/icon/sysManage.png',
       path: "/index",
     },
     {
       name: "系统管理",
       icon: "el-icon-setting",
+      //icon:'/icon/sysManage.png',
       path: "/sys",
       children: [
         { name: "角色管理", path: "/P0101" },
@@ -23,6 +25,7 @@ export function getMock(params) {
     {
       name: "系统监控",
       icon: "el-icon-odometer",
+      //icon:'/icon/sysManage.png',
       path: "/sys1",
       children: [
         { name: "在线用户", path: "/P0201" },
@@ -37,6 +40,7 @@ export function getMock(params) {
     {
       name: "组件",
       icon: "el-icon-monitor",
+      //icon:'/icon/sysManage.png',
       path: "/assembly",
       children: [
         { name: "时间线", path: "/P0301" },

@@ -1,22 +1,22 @@
 <template>
-  <div>
+  <div class="menu">
     <div v-for="(item, index) in menuList" :key="index">
       <el-submenu v-if="isNotEmpty(item.children)" :index="item.path || item.name">
-        <div slot="title" :class="[isCollapse ? 'horizontal' : 'vertical']">
+        <div slot="title" class="vertical">
           <i v-if="isIcon && item.icon" :class="item.icon"></i>
           <img :src="item.icon" v-else />
-          <span :class="[isCollapse ? 'notitle' : '']">{{ item.name }}</span>
+          <span>{{ item.name }}</span>
         </div>
-        <menus-tree :menu-list="item.children" :is-collapse="isCollapse" :is-icon="isIcon" />
+        <menus-tree :menu-list="item.children" :is-icon="isIcon" />
       </el-submenu>
       <el-menu-item v-if="!isNotEmpty(item.children) && isIcon" :index="item.path || item.name">
         <i :class="item.icon" v-if="item.icon"></i>
-        <span slot="title" :class="[isCollapse ? 'notitle' : '']">{{ item.name }}</span>
+        <span slot="title">{{ item.name }}</span>
       </el-menu-item>
       <el-menu-item v-if="!isNotEmpty(item.children) && !isIcon" :index="item.path || item.name">
-        <div :class="[isCollapse ? 'horizontal' : 'vertical']">
+        <div class="vertical">
           <img :class="item.icon" v-if="item.icon" :src="item.icon" :alt="item.name" />
-          <span slot="title" :class="[isCollapse ? 'notitle' : '']">{{ item.name }}</span>
+          <span slot="title">{{ item.name }}</span>
         </div>
       </el-menu-item>
     </div>
@@ -28,7 +28,6 @@ export default {
   name: "menusTree",
   props: {
     menuList: Array,
-    isCollapse: Boolean,
     isIcon: Boolean,
   },
   methods: {

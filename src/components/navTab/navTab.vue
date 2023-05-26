@@ -130,6 +130,7 @@ export default {
   display: flex;
   font-size: 12px;
   margin-bottom: 16px;
+  overflow-x: auto;
   .tab-item {
     width: 100px;
     line-height: 30px;
@@ -157,5 +158,15 @@ export default {
     color: #e81734;
     cursor: pointer;
   }
+}
+.nav-tab::-webkit-scrollbar {
+  height: 3px;
+}
+.nav-tab::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+}
+.nav-tab::-webkit-scrollbar-track {
+  background: #eee;
+  display: none;
 }
 </style>

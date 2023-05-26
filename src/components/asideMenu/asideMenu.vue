@@ -17,6 +17,7 @@
 </template>
 <script>
 import menuTree from "./menuTree.js";
+// import menuTree from "./menusTree.vue";
 export default {
   name: "asideMenu",
   components: { menuTree },
@@ -53,6 +54,7 @@ export default {
     },
     async getMenuList() {
       this.menuList = await this.$post("menu/getMenuList", {}, true);
+      console.log(this.menuList);
     },
   },
 };

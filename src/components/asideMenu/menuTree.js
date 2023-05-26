@@ -116,6 +116,7 @@ export default Vue.component("menuTree", {
                   props: {
                     menuList: group.children,
                     isCollapse: this.isCollapse,
+                    isIcon: this.isIcon,
                   },
                 }),
               ]
@@ -182,6 +183,7 @@ export default Vue.component("menuTree", {
                   props: {
                     menuList: group.children,
                     isCollapse: this.isCollapse,
+                    isIcon: this.isIcon,
                   },
                 }),
               ]
